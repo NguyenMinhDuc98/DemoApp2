@@ -1,43 +1,37 @@
-import * as React from 'react';
-import {View, useWindowDimensions, StyleSheet} from 'react-native';
-import {TabView, SceneMap} from 'react-native-tab-view';
+import React, {useState} from 'react';
+import {useWindowDimensions} from 'react-native';
+import {SceneMap, TabView} from 'react-native-tab-view';
 import RequestDetails from './Details';
+import DetailsFooter from './Footer';
+import RequestList from './List';
 
 const DetailsRoute = () => <RequestDetails />;
 
-const SecondRoute = () => <View style={styles.secondRouteStyle} />;
+const RequestRoute = () => <RequestList />;
 
 const renderScene = SceneMap({
   details: DetailsRoute,
-  second: SecondRoute,
+  request: RequestRoute,
 });
 
 export default function Request() {
   const layout = useWindowDimensions();
 
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    {key: 'details', title: 'Details'},
-    {key: 'second', title: 'Second'},
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    {key: 'details', title: 'Thông tin nhân viên'},
+    {key: 'request', title: 'Danh sách hàng hóa, dịch vụ cần mua'},
   ]);
 
   return (
-    <TabView
-      navigationState={{index, routes}}
-      renderScene={renderScene}
-      onIndexChange={setIndex}
-      initialLayout={{width: layout.width}}
-    />
+    <>
+      <TabView
+        navigationState={{index, routes}}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{width: layout.width}}
+      />
+      <DetailsFooter />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  detailsRouteStyle: {
-    flex: 1,
-    backgroundColor: '#ff4081',
-  },
-  secondRouteStyle: {
-    flex: 1,
-    backgroundColor: '#673ab7',
-  },
-});

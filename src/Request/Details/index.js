@@ -2,7 +2,6 @@ import {ScrollView} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text} from 'react-native';
 import {getRequestDetails} from '../../../service/RequestService';
-import DetailsFooter from './Footer';
 
 const RequestDetails = () => {
   const [details, setDetails] = useState({});
@@ -43,22 +42,18 @@ const RequestDetails = () => {
     ));
   };
 
-  return (
-    <>
-      <ScrollView>{detailsLayout()}</ScrollView>
-      <DetailsFooter />
-    </>
-  );
+  return <ScrollView style={styles.container}>{detailsLayout()}</ScrollView>;
 };
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 20,
+    marginVertical: 20,
   },
   info: {
     padding: 15,
-    margin: 15,
-    backgroundColor: 'green',
+    marginHorizontal: 15,
+    marginVertical: 5,
+    backgroundColor: 'white',
   },
 });
 
