@@ -1,4 +1,4 @@
-import {ScrollView, View} from 'native-base';
+import {ScrollView} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text} from 'react-native';
 import {getRequestDetails} from '../../../service/RequestService';
