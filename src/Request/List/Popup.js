@@ -17,15 +17,15 @@ export default function PurchaseDetailsModal({
     {label: 'Xuất xứ', value: dataSource?.xuatXu_Hang},
     {label: 'Số lượng', value: dataSource?.soLuong},
     {label: 'Đơn vị', value: dataSource?.donVi},
-    {label: 'Đơn giá', value: dataSource?.donGiaTamTinh},
-    {label: 'Tổng tiền', value: dataSource?.tenHangHoa_DichVu},
+    {label: 'Đơn giá', value: `${dataSource?.donGiaTamTinh} đ`},
+    {label: 'Tổng tiền', value: `${dataSource?.soTienTamTinh} đ`},
     {label: 'Mã HMTK', value: dataSource?.maHangMucTrienKhai},
     {label: 'Ghi chú', value: dataSource?.ghiChu},
   ];
 
   const dataLayout = () => {
     return data.map((item, index) => (
-      <Box key={index}>
+      <Box key={index} style={styles.item}>
         <Text style={styles.itemLabel}>{item.label}</Text>
         <Text style={styles.itemValue}>{item.value}</Text>
       </Box>
@@ -37,7 +37,9 @@ export default function PurchaseDetailsModal({
       <Modal isOpen={showModal} onClose={handleClose}>
         <Modal.Content maxWidth="400px">
           <Modal.CloseButton />
-          <Modal.Header>Contact Us</Modal.Header>
+          <Modal.Header _text={styles.modalHeader}>
+            Chi tiết đơn hàng
+          </Modal.Header>
           <Modal.Body>{dataLayout()}</Modal.Body>
         </Modal.Content>
       </Modal>
@@ -46,6 +48,16 @@ export default function PurchaseDetailsModal({
 }
 
 const styles = StyleSheet.create({
-  itemLabel: {},
+  modalHeader: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  item: {
+    marginBottom: 10,
+  },
+  itemLabel: {
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
   itemValue: {},
 });
