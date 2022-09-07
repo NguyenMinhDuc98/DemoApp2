@@ -3,50 +3,36 @@ import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import PurchaseDetailsModal from './Popup';
 
-export default function RequestList() {
-  const [purchaseList, setPurchaseList] = useState([]);
+export default function PurchaseList({purchaseList}) {
+  console.log(
+    '🚀 ~ file: index.js ~ line 7 ~ PurchaseList ~ purchaseList',
+    purchaseList,
+  );
   const [showModal, setShowModal] = useState(false);
+  const [dataSource, setDataSource] = useState();
 
-  const data = [
-    {
-      id: '1',
-      fullName: 'Aafreen Khan',
-      timeStamp: '12:47 PM',
-    },
-    {
-      id: '2',
-      fullName: 'Sujitha Mathur',
-      timeStamp: '11:11 PM',
-    },
-    {
-      id: '3',
-      fullName: 'Anci Barroco',
-      timeStamp: '6:22 PM',
-    },
-    {
-      id: '4',
-      fullName: 'Aniket Kumar',
-      timeStamp: '8:56 PM',
-    },
-    {
-      id: '5',
-      fullName: 'Kiara',
-      timeStamp: '12:47 PM',
-    },
-  ];
+  const handleOpenModal = item => {
+    setShowModal(true);
+    setDataSource(item);
+  };
+
   return (
     <Box style={styles.container}>
-      <PurchaseDetailsModal showModal={showModal} setShowModal={setShowModal} />
+      <PurchaseDetailsModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        dataSource={dataSource}
+      />
       <View style={styles.listHeader}>
         <Text style={styles.headerText}>Hàng hóa, dịch vụ</Text>
-        <Text style={styles.headerText}>Mã HMTK</Text>
+        <Text style={styles.headerText}>Xuất xứ</Text>
       </View>
       <FlatList
-        data={data}
+        data={purchaseList}
         renderItem={({item}) => (
           <TouchableOpacity
             style={styles.singlePurchase}
-            onPress={() => setShowModal(true)}>
+            onPress={() => handleOpenModal(item)}>
             <HStack space={[2, 3]} justifyContent="space-between">
               <VStack>
                 <Text
@@ -55,7 +41,7 @@ export default function RequestList() {
                   }}
                   color="coolGray.800"
                   bold>
-                  {item.fullName}
+                  {item.tenHangHoa_DichVu}
                 </Text>
               </VStack>
               <Spacer />
@@ -66,7 +52,7 @@ export default function RequestList() {
                 }}
                 color="coolGray.800"
                 alignSelf="flex-start">
-                {item.timeStamp}
+                {item.xuatXu_Hang}
               </Text>
             </HStack>
           </TouchableOpacity>
