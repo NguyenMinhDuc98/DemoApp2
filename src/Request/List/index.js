@@ -4,10 +4,6 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 import PurchaseDetailsModal from './Popup';
 
 export default function PurchaseList({purchaseList}) {
-  console.log(
-    '🚀 ~ file: index.js ~ line 7 ~ PurchaseList ~ purchaseList',
-    purchaseList,
-  );
   const [showModal, setShowModal] = useState(false);
   const [dataSource, setDataSource] = useState();
 

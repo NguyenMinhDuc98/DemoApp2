@@ -5,6 +5,9 @@ import {Center, NativeBaseProvider} from 'native-base';
 import AppBar from './src/commons/AppBar';
 import Request from './src/Request';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Home from './src/Home';
 
 const App = () => {
   const getToken = async () => {
@@ -38,13 +41,20 @@ const App = () => {
     getToken();
   }, []);
 
+  const Stack = createNativeStackNavigator();
+
   return (
-    <NativeBaseProvider>
-      <Center>
-        <AppBar />
-      </Center>
-      <Request />
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <NativeBaseProvider>
+        {/* <Center>
+          <AppBar />
+        </Center> */}
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Request" component={Request} />
+        </Stack.Navigator>
+      </NativeBaseProvider>
+    </NavigationContainer>
   );
 };
 

@@ -7,7 +7,7 @@ const EmployeeInfo = ({details}) => {
   const infos = [
     {label: 'Tên:', value: details?.tenNhanVien},
     {label: 'Chức vụ:', value: details?.chucVu},
-    {label: 'Mã nhân viên:', value: details?.maNhanVien},
+    {label: 'Mã nhân viên:', value: details?.maNhanVien?.slice(0, 9)},
     {label: 'Phòng/Ban:', value: details?.phongBan},
     {label: 'Mã dự án:', value: details?.maDuAn},
     {label: 'Địa điểm làm việc:', value: details?.diaDiemLamViec},

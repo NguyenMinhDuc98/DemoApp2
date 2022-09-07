@@ -7,7 +7,7 @@ import buyImg from '../../assets/images/buy.2c5404e.gif';
 import listImg from '../../assets/images/list.9dcaec3.png';
 import wpImg from '../../assets/images/wp.f13a37b.gif';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const features = [
     {
       label: 'Quản lý dự án',
@@ -16,14 +16,18 @@ const Home = () => {
     },
     {label: 'Phân tích dòng tiền', value: '', image: cashImg},
     {label: 'Mua Hàng', value: 'Request', image: buyImg},
-    {label: '1Office', value: ''},
+    {label: '1Office', value: '', image: projectManageImg},
     {label: 'Danh sách nhà phân phối', value: '', image: listImg},
     {label: 'Địa điểm làm việc', value: '', image: wpImg},
   ];
 
   const getFeaturesLayout = () => {
     return features.map((feature, index) => (
-      <TouchableOpacity style={styles.featureBox} key={index}>
+      <TouchableOpacity
+        style={styles.featureBox}
+        key={index}
+        activeOpacity={0.7}
+        onPress={() => navigation.navigate(feature.value)}>
         <Box style={styles.imageBox}>
           <Image
             source={feature.image}
@@ -54,7 +58,7 @@ const styles = StyleSheet.create({
   imageBox: {
     height: 60,
     width: 100,
-    backgroundColor: 'green',
+    backgroundColor: 'rgb(21, 119, 135)',
     borderRadius: 10,
     marginBottom: 15,
     padding: 10,

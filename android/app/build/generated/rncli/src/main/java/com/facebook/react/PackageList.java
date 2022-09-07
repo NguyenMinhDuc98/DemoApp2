@@ -17,6 +17,8 @@ import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.reactnativepagerview.PagerViewPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+// react-native-screens
+import com.swmansion.rnscreens.RNScreensPackage;
 // react-native-svg
 import com.horcrux.svg.SvgPackage;
 // react-native-vector-icons
@@ -69,6 +71,7 @@ public class PackageList {
       new AsyncStoragePackage(),
       new PagerViewPackage(),
       new SafeAreaContextPackage(),
+      new RNScreensPackage(),
       new SvgPackage(),
       new VectorIconsPackage()
     ));
