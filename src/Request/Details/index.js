@@ -47,6 +47,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flex: 1,
     flexDirection: 'row',
+    elevation: 3,
+    borderRadius: 5,
   },
   label: {
     fontWeight: 'bold',

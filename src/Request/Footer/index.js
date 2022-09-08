@@ -5,11 +5,11 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 export default function DetailsFooter() {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.approveButton} activeOpacity={0.7}>
-        <Text style={styles.buttonText}>Duyệt</Text>
-      </TouchableOpacity>
       <TouchableOpacity style={styles.rejectButton} activeOpacity={0.7}>
         <Text style={styles.buttonText}>Không duyệt</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.approveButton} activeOpacity={0.7}>
+        <Text style={styles.buttonText}>Duyệt</Text>
       </TouchableOpacity>
     </View>
   );
@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
   approveButton: {
     width: '50%',
     alignItems: 'center',
-    backgroundColor: '#3AB408',
+    backgroundColor: '#0066FF',
   },
   rejectButton: {
     width: '50%',
     alignItems: 'center',
-    backgroundColor: '#F72020',
+    backgroundColor: 'gray',
   },
   buttonText: {
     color: 'white',
